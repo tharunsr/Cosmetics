@@ -3,6 +3,9 @@ package com.cosmetics.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 public class Product {
 
@@ -17,6 +20,9 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_id")
     Category category ;
+
+    @ManyToMany(mappedBy = "prod")
+    Set<User> user = new HashSet<>();
 
 
     public int getId() {
