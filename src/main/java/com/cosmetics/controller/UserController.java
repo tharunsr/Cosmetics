@@ -16,7 +16,7 @@ public class UserController {
 
     @GetMapping("/")
     public String display(){
-        return "Welcome to Cosmetics";
+        return "Welcome to Users Section";
     }
 
     @GetMapping("/users")

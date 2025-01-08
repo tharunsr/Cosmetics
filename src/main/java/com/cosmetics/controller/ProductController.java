@@ -2,6 +2,7 @@ package com.cosmetics.controller;
 
 import com.cosmetics.entities.Product;
 import com.cosmetics.service.ProductService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,9 +15,9 @@ public class ProductController {
     @Autowired
     ProductService service;
 
-    @GetMapping("/")
-    public String display(){
-        return "Welcome to Cosmetics";
+    @GetMapping(" ")
+    public String display(HttpServletRequest req){
+        return "Welcome to Cosmetics " + req.getSession().getId();
     }
 
     @GetMapping("/products")

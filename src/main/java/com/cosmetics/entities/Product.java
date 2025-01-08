@@ -19,7 +19,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    Category category ;
+    private Category category ;
 
     @ManyToMany(mappedBy = "prod")
     Set<User> user = new HashSet<>();
@@ -57,4 +57,11 @@ public class Product {
         this.price = price;
     }
 
+    public Category getCategory_id() {
+        return category;
+    }
+
+    public void setCategory_id(Category category_id) {
+        this.category = category_id;
+    }
 }
