@@ -6,21 +6,31 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class User {
+public class Customer {
 
     @Id
-    int id;
-    String name;
-    String email;
-    long phone_num;
-    String address;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    @ManyToMany
+    private String name;
+    private String email;
+    private long phone_num;
+    private String address;
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
-            name = "user_products",
-            joinColumns = @JoinColumn(name = "user_id"),
+            name = "customer_products",
+            joinColumns = @JoinColumn(name = "customer_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
-    Set<Product> prod = new HashSet<>();
+    Set<Product> product = new HashSet<>();
+
+    public Set<Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(Set<Product> prod) {
+        this.product = prod;
+    }
 
     public int getId() {
         return id;

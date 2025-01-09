@@ -1,6 +1,5 @@
 package com.cosmetics.entities;
 
-
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -21,9 +20,16 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category ;
 
-    @ManyToMany(mappedBy = "prod")
-    Set<User> user = new HashSet<>();
+    @ManyToMany(mappedBy = "product")
+    Set<Customer> customer = new HashSet<>();
 
+//    public Set<Customer> getCustomer() {
+//        return customer;
+//    }
+//
+//    public void setCustomer(Set<Customer> customer) {
+//        this.customer = customer;
+//    }
 
     public int getId() {
         return id;
@@ -57,11 +63,11 @@ public class Product {
         this.price = price;
     }
 
-    public Category getCategory_id() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory_id(Category category_id) {
-        this.category = category_id;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
